@@ -1,0 +1,12 @@
+#include "pg1kb_proto.dtsi"
+
+&kscan0 {
+    col-gpios
+        = <&xiao_d 5 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 6 GPIO_ACTIVE_HIGH>
+        , <&gpio1 3 GPIO_ACTIVE_HIGH>
+        , <&gpio1 5 GPIO_ACTIVE_HIGH>
+        , <&gpio1 7 GPIO_ACTIVE_HIGH>
+        , <&gpio0 15 GPIO_ACTIVE_HIGH>
+        ;
+};

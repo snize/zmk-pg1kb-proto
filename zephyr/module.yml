@@ -1,0 +1,6 @@
+name: zmk-keyboard-pg1kb-proto
+build:
+  depends:
+    - zmk-driver-paw3222
+  settings:
+    board_root: .

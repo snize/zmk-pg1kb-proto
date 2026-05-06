@@ -1,0 +1,3 @@
+---
+board: [ "seeeduino_xiao_ble" ]
+shield: [ "pg1kb_proto_right" ]

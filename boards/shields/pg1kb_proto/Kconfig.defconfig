@@ -1,0 +1,40 @@
+if SHIELD_PG1KB_PROTO_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "PG1KB Proto"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config INPUT
+    bool
+    default y
+
+config PAW3222
+    bool
+    default y
+
+config SPI
+    bool
+    default y
+
+config ZMK_BLE
+    bool
+    default y
+
+config ZMK_USB
+    bool
+    default y
+
+config ZMK_POINTING
+    bool
+    default y
+
+endif
+
+if SHIELD_PG1KB_PROTO_LEFT || SHIELD_PG1KB_PROTO_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
