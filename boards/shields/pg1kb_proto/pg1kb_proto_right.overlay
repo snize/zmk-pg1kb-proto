@@ -1,5 +1,8 @@
 #include "pg1kb_proto.dtsi"
 
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
+
 &default_transform {
     col-offset = <6>;
 };
@@ -56,5 +59,6 @@
     trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
     };
 };
