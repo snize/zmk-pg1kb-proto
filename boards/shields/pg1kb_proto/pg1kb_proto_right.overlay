@@ -51,7 +51,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         irq-gpios = <&xiao_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        res-cpi = <1200>;
+        res-cpi = <1178>;
     };
 };
 
