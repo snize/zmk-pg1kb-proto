@@ -11,16 +11,22 @@
         #address-cells = <1>;
         #size-cells = <0>;
 
-        split_input: split_input@0 {
+        left_trackball_input: left_trackball_input@0 {
             compatible = "zmk,input-split";
             reg = <0>;
         };
     };
 
-    split_listener: split_listener {
+    left_trackball_listener: left_trackball_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
-        device = <&split_input>;
+        device = <&left_trackball_input>;
+    };
+
+    right_trackball_listener: right_trackball_listener {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&trackball>;
     };
 
     pg1kb_proto_physical_layout: physical_layout_0 {
@@ -104,13 +110,13 @@
         wakeup-source;
         debounce-press-ms = <5>;
         debounce-release-ms = <5>;
+    };
+};
 
-        row-gpios
-            = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-            ;
+&spi0 {
+    trackball: trackball@0 {
+        status = "disabled";
+        reg = <0>;
+        spi-max-frequency = <2000000>;
     };
 };

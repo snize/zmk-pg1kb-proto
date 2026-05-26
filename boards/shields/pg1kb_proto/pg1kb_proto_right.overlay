@@ -1,17 +1,26 @@
 #include "pg1kb_proto.dtsi"
 
-#include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
-
 &default_transform {
     col-offset = <6>;
 };
 
-&split_listener {
+&left_trackball_listener {
+    status = "okay";
+};
+
+&right_trackball_listener {
     status = "okay";
 };
 
 &kscan0 {
+    row-gpios
+        = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        , <&xiao_d 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
+        ;
+
     col-gpios
         = <&xiao_d 5 GPIO_ACTIVE_HIGH>
         , <&xiao_d 6 GPIO_ACTIVE_HIGH>
@@ -48,21 +57,11 @@
     pinctrl-1 = <&pg1kb_proto_spi0_sleep>;
     pinctrl-names = "default", "sleep";
     cs-gpios = <&xiao_d 7 GPIO_ACTIVE_LOW>;
-
-    trackball: trackball@0 {
-        status = "okay";
-        compatible = "pixart,paw3222";
-        reg = <0>;
-        spi-max-frequency = <2000000>;
-        irq-gpios = <&xiao_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        res-cpi = <1178>;
-    };
 };
 
-/ {
-    trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&trackball>;
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_XY_SWAP | INPUT_TRANSFORM_Y_INVERT)>;
-    };
+&trackball {
+    status = "okay";
+    compatible = "pixart,paw3222";
+    irq-gpios = <&xiao_d 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+    res-cpi = <1178>;
 };
